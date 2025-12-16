@@ -45,6 +45,7 @@ export class Tab2Page {
   async showToast(msg: string) {
     const toast = await this.toastCtrl.create({
       message: msg,
+      position: 'top',
       duration: 2000,
       color: 'dark'
     });
