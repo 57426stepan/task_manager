@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-title>
-      Tab 1
+      Moje úkoly
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,9 +9,43 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
+      <ion-title size="large">Úkoly</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <ion-list lines="full">
+    <ion-item-sliding *ngFor="let note of notes">
+      
+      <ion-item>
+        <ion-icon slot="start" name="ellipse" color="medium" style="font-size: 10px;"></ion-icon>
+        <ion-label class="ion-text-wrap">
+          <h2>{{ note.title }}</h2>
+          <p>{{ note.text }}</p>
+        </ion-label>
+        <ion-button fill="clear" slot="end" (click)="markAsDone(note)">
+          <ion-icon slot="icon-only" name="checkmark-circle" color="success"></ion-icon>
+        </ion-button>
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option color="danger" (click)="deleteNote(note)">
+          <ion-icon slot="top" name="trash"></ion-icon>
+          Smazat
+        </ion-item-option>
+      </ion-item-options>
+    
+    </ion-item-sliding>
+  </ion-list>
+
+  <div *ngIf="notes.length === 0" class="ion-text-center ion-padding" style="margin-top: 50px; opacity: 0.6;">
+    <h3>Žádné úkoly</h3>
+    <p>Máte hotovo! Přidejte nový úkol tlačítkem +.</p>
+  </div>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="addNote()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
 </ion-content>

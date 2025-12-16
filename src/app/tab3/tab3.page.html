@@ -1,17 +1,36 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 3
+      Můj Profil
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="ion-padding">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
+      <ion-title size="large">Profil</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <div class="profile-container ion-text-center" style="margin-top: 50px;">
+    
+    <ion-icon name="person-circle" color="medium" style="font-size: 100px;"></ion-icon>
+    
+    <h2 *ngIf="userEmail">{{ userEmail }}</h2>
+    <p *ngIf="!userEmail">Načítám profil...</p>
+
+    <div style="margin-top: 40px;">
+      <p class="ion-text-muted">
+        Jste úspěšně přihlášeni v aplikaci Task Manager.
+        Vaše data jsou bezpečně uložena v cloudu.
+      </p>
+    </div>
+
+    <ion-button color="danger" expand="block" (click)="logout()" style="margin-top: 50px;">
+      <ion-icon slot="start" name="log-out"></ion-icon>
+      Odhlásit se
+    </ion-button>
+
+  </div>
 </ion-content>

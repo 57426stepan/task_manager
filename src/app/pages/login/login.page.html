@@ -1,13 +1,54 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>login</ion-title>
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Můj Task Manager</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">login</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
+  
+  <div class="login-container">
+    <ion-img 
+      src="https://ionicframework.com/docs/img/demos/thumbnail.svg" 
+      style="width: 150px; margin: 20px auto;">
+    </ion-img>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title class="ion-text-center">Vítejte zpět</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-item>
+          <ion-input
+            label="E-mail"
+            labelPlacement="floating"
+            type="email"
+            placeholder="vas@email.cz"
+            [(ngModel)]="credentials.email"
+          ></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input
+            label="Heslo"
+            labelPlacement="floating"
+            type="password"
+            placeholder="******"
+            [(ngModel)]="credentials.password"
+          ></ion-input>
+        </ion-item>
+
+        <div class="ion-padding-top">
+          <ion-button expand="block" (click)="login()">
+            Přihlásit se
+          </ion-button>
+          
+          <ion-button expand="block" fill="outline" class="ion-margin-top" (click)="register()">
+            Vytvořit účet
+          </ion-button>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
 </ion-content>
